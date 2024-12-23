@@ -1,0 +1,154 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"languageName":"csharp","name":"csharp"}]}}
+
+#!markdown
+
+### **Easy Exercises**
+
+#!markdown
+
+1. **Find all even numbers in an array**
+
+#!csharp
+
+var numbers = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+// Write a LINQ query to get even numbers
+
+var evenNumbers = numbers.Where((p)=> p % 2 ==0);
+foreach(var item in evenNumbers)
+    Console.WriteLine(item);
+
+#!markdown
+
+2. **Extract strings with more than 3 characters**
+
+#!csharp
+
+var words = new List<string> { "cat", "house", "dog", "elephant", "hat" };
+// Write a LINQ query to filter words with length > 3
+
+var longWords = words.Where((p)=> p.Length>3);
+
+foreach(var item in longWords)
+    Console.WriteLine(item);
+
+#!markdown
+
+3. **Select the square of each number**
+
+#!csharp
+
+var numbers = new[] { 1, 2, 3, 4, 5 };
+// Write a LINQ query to get squares of the numbers
+
+var squares = numbers.Select((num)=> num* num);
+foreach(var item in squares)
+    Console.WriteLine(item);
+
+#!markdown
+
+4. **Sort an array of integers**
+
+#!csharp
+
+var numbers = new[] { 5, 3, 8, 1, 2 };
+// Use LINQ to sort the numbers in ascending order
+var sortedNumbers =numbers.OrderBy((p)=> p);
+foreach(var item in sortedNumbers)
+    Console.WriteLine(item);
+
+#!markdown
+
+5. **Group words by their first letter**
+
+#!csharp
+
+var words = new[] { "apple", "banana", "cherry", "avocado", "blueberry" };
+// Write a LINQ query to group words by their first letter
+   
+var groupedWords = words.GroupBy((name) => name[0]);
+foreach(var group in groupedWords)
+{
+    Console.WriteLine($"words starting with letter {group.Key}");
+    foreach(var item in group)
+        Console.WriteLine(item);
+}
+
+#!markdown
+
+### **Medium Exercises**
+
+#!markdown
+
+6. **Filter employees aged 30 or above**
+
+#!csharp
+
+var employees = new[]
+   {
+       new { Name = "Alice", Age = 25 },
+       new { Name = "Bob", Age = 35 },
+       new { Name = "Charlie", Age = 30 }
+   };
+   // Use LINQ to filter employees aged 30 or above
+   var seniorEmployees = employees.Where((employee) => (employee.Age >= 30));
+foreach(var item in seniorEmployees)
+        Console.WriteLine(item);
+
+#!markdown
+
+7. **Find the second-highest number in a list**
+
+#!csharp
+
+var numbers = new[] { 10, 20, 30, 40, 50 };
+// Write a LINQ query to find the second-highest number
+var secondHighest =numbers.OrderByDescending((number)=>number).Skip(1).FirstOrDefault();
+Console.WriteLine(secondHighest);
+
+var secondHighestEx =numbers.Where((number)=> number<numbers.Max()).Max(); 
+Console.WriteLine(secondHighestEx);
+
+#!markdown
+
+8. **Create a list of anonymous types**
+
+#!csharp
+
+var products = new[]
+   {
+       new { Name = "Laptop", Price = 1000 },
+       new { Name = "Phone", Price = 500 },
+       new { Name = "Tablet", Price = 300 }
+   };
+   // Select only Name and Price into a new anonymous type
+   var productSummaries = products.Select((product)=> new {product.Name , product.Price});
+   foreach(var item in productSummaries)
+        Console.WriteLine(item);
+
+#!markdown
+
+9. **Find distinct integers in a list**
+
+#!csharp
+
+var numbers = new[] { 1, 2, 2, 3, 4, 4, 5 };
+ // Use LINQ to get distinct numbers
+var distinctNumbers = numbers.Distinct();
+foreach(var item in distinctNumbers)
+        Console.WriteLine(item);
+   
+
+#!markdown
+
+10. **Check if all elements are positive**
+
+#!csharp
+
+var numbers = new[] { 1, 2, 3, 4, 5 };
+    // Write a LINQ query to check if all numbers are positive
+    var allPositive = numbers.All((num) => num > 0 ) ;
+
+        Console.WriteLine(allPositive);
+   
